@@ -2,43 +2,48 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="QCM Méd"><meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="theme-color" content="#0f766e"><link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-180.png">
+<meta name="theme-color" content="#2f5bea"><link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-180.png">
 <title>QCM Médecine</title>
 <style>
-:root{--bg:#f3f6f8;--card:#fff;--tx:#14202b;--mu:#64748b;--ac:#0f766e;--on:#fff;--soft:#ccfbf1;--ok:#16a34a;--ko:#dc2626;--wa:#d97706;--bd:#dde4ea}
-@media(prefers-color-scheme:dark){:root{--bg:#0b1218;--card:#15202b;--tx:#e6edf3;--mu:#8b9bab;--ac:#2dd4bf;--on:#042f2e;--soft:#134e4a;--bd:#243241}}
+:root{--bg:#f4f6fb;--card:#fff;--tx:#0e1a2f;--mu:#667389;--ac:#2f5bea;--on:#fff;--soft:#e9eeff;--ok:#16a34a;--ko:#dc2626;--wa:#d97706;--bd:#e3e8f2;--sh:0 1px 2px rgba(15,27,60,.05),0 8px 24px rgba(15,27,60,.06)}
+@media(prefers-color-scheme:dark){:root{--bg:#090e19;--card:#111a2b;--tx:#e8eefc;--mu:#8d9bb5;--ac:#6b8cff;--soft:#1a2644;--bd:#212e47;--sh:none}}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.45 -apple-system,system-ui,sans-serif;padding:env(safe-area-inset-top) env(safe-area-inset-right) calc(80px + env(safe-area-inset-bottom)) env(safe-area-inset-left)}
-#m{max-width:820px;margin:0 auto;padding:18px}
-h1{font-size:30px;margin:8px 0 14px}h2{font-size:20px;margin:22px 0 10px}
-.card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:16px;margin:0 0 12px}
-.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.sp{flex:1}.mu{color:var(--mu);font-size:14px}
+body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.5 -apple-system,"SF Pro Text",system-ui,sans-serif;touch-action:manipulation}
+main{padding:calc(20px + env(safe-area-inset-top)) 20px calc(100px + env(safe-area-inset-bottom))}#m{max-width:1180px;margin:0 auto}
+nav{position:fixed;z-index:20;left:0;right:0;bottom:0;display:flex;gap:4px;background:color-mix(in srgb,var(--card) 88%,transparent);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-top:1px solid var(--bd);padding:8px 10px calc(8px + env(safe-area-inset-bottom))}
+nav .brand{display:none}nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;border:0;background:none;color:var(--mu);font-size:12px;font-weight:600;padding:6px 4px;border-radius:14px}nav button.on{color:var(--ac);background:var(--soft)}
+@media(min-width:900px){nav{top:0;right:auto;width:250px;flex-direction:column;border-top:0;border-right:1px solid var(--bd);padding:calc(26px + env(safe-area-inset-top)) 14px 24px;gap:6px}
+nav .brand{display:flex;align-items:center;gap:10px;font-size:22px;margin:0 8px 20px}nav .brand i{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#1e3a8a,#2f5bea 60%,#0ea5a4);color:#fff;display:grid;place-items:center;font-style:normal}
+nav button{flex:none;flex-direction:row;gap:12px;font-size:17px;padding:13px 14px}main{margin-left:250px;padding:34px 38px 50px}body.focus main{margin-left:0}}
+body.focus nav{display:none}body.focus main{padding-bottom:60px}body.focus #m{max-width:900px}
+h1{font-size:32px;letter-spacing:-.02em;margin:4px 0 16px}h2{font-size:21px;margin:26px 0 12px}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.sp{flex:1}.mu{color:var(--mu);font-size:14px}
 button,select,input,textarea{font:inherit;color:inherit}
-.btn{background:var(--ac);color:var(--on);border:0;border-radius:14px;padding:13px 20px;font-weight:600;min-height:48px}
-.btn.g{background:var(--soft);color:var(--ac)}.btn.d{background:transparent;color:var(--ko);border:1px solid var(--bd)}.btn[disabled]{opacity:.4}
-.bar{height:8px;background:var(--bd);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac)}
-.tabs{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:center;gap:8px;background:var(--card);border-top:1px solid var(--bd);padding:8px 12px calc(8px + env(safe-area-inset-bottom))}
-.tabs button{flex:1;max-width:240px;background:none;border:0;border-radius:12px;padding:10px;color:var(--mu);font-weight:600}.tabs .on{background:var(--soft);color:var(--ac)}
-.seg{display:flex;background:var(--bg);border-radius:12px;padding:3px;gap:3px}.seg button{flex:1;border:0;background:none;border-radius:10px;padding:10px 6px;min-height:44px}.seg .on{background:var(--ac);color:var(--on);font-weight:600}
-.opt{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;background:var(--card);border:2px solid var(--bd);border-radius:16px;padding:14px;margin:0 0 10px;min-height:56px}
-.opt b{min-width:30px;height:30px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-size:14px}
-.opt.s{border-color:var(--ac);background:var(--soft)}.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,transparent)}
-.opt.ko{border-color:var(--ko);background:color-mix(in srgb,var(--ko) 15%,transparent)}.opt.mi{border-color:var(--wa);border-style:dashed}
-.tag{font-size:12px;font-weight:700;padding:3px 9px;border-radius:20px;background:var(--soft);color:var(--ac)}
-.stem{font-size:20px;font-weight:600;margin:12px 0 16px}.ex{background:var(--soft);border-radius:14px;padding:12px 14px;margin:6px 0 14px}
-input,select,textarea{width:100%;background:var(--bg);border:1px solid var(--bd);border-radius:12px;padding:12px}textarea{min-height:200px;font:14px ui-monospace,monospace}
-details summary{cursor:pointer;padding:6px 0}.big{font-size:56px;font-weight:800;color:var(--ac);line-height:1}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0;max-height:132px;overflow:auto}.chip{min-width:42px;height:42px;border-radius:12px;border:2px solid var(--bd);background:var(--card);font-weight:600}
-.chip.an{background:var(--soft)}.chip.ok{border-color:var(--ok)}.chip.ko{border-color:var(--ko)}.chip.wa{border-color:var(--wa)}.chip.cur{outline:3px solid var(--ac);outline-offset:1px}
-body{touch-action:manipulation}.lst{display:block!important}
-</style></head><body><div id="m"></div><div class="tabs" id="tb"></div>
+.card{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:18px;margin:0 0 12px;box-shadow:var(--sh)}
+.btn{background:var(--ac);color:var(--on);border:0;border-radius:14px;padding:13px 20px;font-weight:600;min-height:48px}.btn.g{background:var(--soft);color:var(--ac)}.btn.d{background:transparent;color:var(--ko);border:1px solid var(--bd)}.btn.lt{background:#fff;color:#1e3a8a}.btn.gl{background:rgba(255,255,255,.2);color:#fff}.btn[disabled]{opacity:.4}
+.hero{background:linear-gradient(135deg,#1e3a8a,#2f5bea 55%,#0ea5a4);color:#fff;border-radius:26px;padding:30px;margin-bottom:16px;box-shadow:var(--sh)}.hero h1{margin:4px 0 6px;font-size:36px}.hero p{margin:0 0 18px;opacity:.88}.kick{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.tile,.ql{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:16px;box-shadow:var(--sh);text-align:left}.tile b,.ql b{display:block;font-size:28px;line-height:1.2}.tile span,.ql span{color:var(--mu);font-size:14px}
+.qls{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.ql:disabled{opacity:.45}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}.course{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:16px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:10px}
+.cols{display:grid;grid-template-columns:1.5fr 1fr;gap:20px;align-items:start}@media(max-width:899px){.cols{grid-template-columns:1fr}}@media(max-width:600px){.tiles{grid-template-columns:repeat(2,1fr)}.qls{grid-template-columns:1fr}}
+.bars{display:flex;gap:8px;height:110px;align-items:flex-end}.bc{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;font-size:12px;color:var(--mu)}.bc i{width:100%;min-height:4px;background:var(--ac);border-radius:6px}
+.bar{height:8px;background:var(--bd);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ac),#0ea5a4)}
+.seg{display:flex;background:var(--bg);border-radius:12px;padding:3px;gap:3px;margin-bottom:12px}.seg button{flex:1;border:0;background:none;border-radius:10px;padding:10px 6px;min-height:44px}.seg .on{background:var(--ac);color:var(--on);font-weight:600}
+.opt{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;background:var(--card);border:2px solid var(--bd);border-radius:16px;padding:14px;margin:0 0 10px;min-height:56px}.opt b{min-width:30px;height:30px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-size:14px}
+.opt.s{border-color:var(--ac);background:var(--soft)}.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,transparent)}.opt.ko{border-color:var(--ko);background:color-mix(in srgb,var(--ko) 15%,transparent)}.opt.mi{border-color:var(--wa);border-style:dashed}.lst{display:block!important}
+.tag{font-size:12px;font-weight:700;padding:3px 9px;border-radius:20px;background:var(--soft);color:var(--ac)}.stem{font-size:21px;font-weight:600;margin:12px 0 16px}.ex{background:var(--soft);border-radius:14px;padding:12px 14px;margin:8px 0 4px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0;max-height:132px;overflow:auto}.chip{min-width:42px;height:42px;border-radius:12px;border:2px solid var(--bd);background:var(--card);font-weight:600}.chip.an{background:var(--soft)}.chip.ok{border-color:var(--ok)}.chip.ko{border-color:var(--ko)}.chip.wa{border-color:var(--wa)}.chip.cur{outline:3px solid var(--ac);outline-offset:1px}
+.top{position:sticky;top:0;z-index:5;display:flex;gap:10px;align-items:center;background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:10px 0;margin-bottom:8px}
+.num,.step{width:32px;height:32px;border-radius:50%;background:var(--ac);color:var(--on);display:inline-grid;place-items:center;font-weight:700}
+input,select,textarea{width:100%;background:var(--bg);border:1px solid var(--bd);border-radius:12px;padding:12px}textarea{min-height:240px;font:14px ui-monospace,monospace}details summary{cursor:pointer;padding:6px 0}.big{font-size:56px;font-weight:800;color:var(--ac);line-height:1}
+#toast{position:fixed;left:50%;bottom:110px;transform:translate(-50%,20px);background:#111;color:#fff;padding:12px 22px;border-radius:30px;opacity:0;transition:.25s;z-index:50;pointer-events:none}#toast.show{opacity:1;transform:translate(-50%,0)}
+</style></head><body><nav id="tb"></nav><main><div id="m"></div></main>
 <script>
 const $=s=>document.querySelector(s),K='qcm-v1';
 let db;try{db=JSON.parse(localStorage.getItem(K))}catch(e){}db=db||{c:{},s:{},h:[]};db.t0=db.t0||Date.now();
 const save=()=>{try{localStorage.setItem(K,JSON.stringify(db))}catch(e){alert('Stockage plein : exporte une sauvegarde.')}};
 const uid=()=>Math.random().toString(36).slice(2,9),L='ABCDEFGH';
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let V='home',S=null,cv='',sq='',eid='',cfg={c:'*',n:20,f:'smart',x:0,p:1},msg='';
+let V='home',S=null,cv='',sq='',eid='',gsq='',cfg={c:'*',n:20,f:'smart',x:0,p:1,m:'one'},msg='';
 navigator.storage?.persist?.();
 /* ---------- import ---------- */
 function parseTxt(t,def){const out=[];let course=def;
@@ -54,13 +59,13 @@ function parseJson(t,def){let d=JSON.parse(t),c=def;if(!Array.isArray(d)){c=d.co
  return d.map(x=>{let a=x.a??x.answers??x.reponses??[];if(typeof a==='string')a=[...a.toUpperCase().replace(/[^A-H]/g,'')];if(!Array.isArray(a))a=[a];
   a=a.map(v=>typeof v==='string'?L.indexOf(v.toUpperCase()):v);
   return{c:x.c||x.course||c,q:x.q||x.question,o:x.o||x.options||[],a,e:x.e||x.explication||x.explanation||'',t:x.t||x.type}}).filter(x=>x.q&&x.o.length>1&&x.a.length&&x.a.every(i=>i>=0&&i<x.o.length))}
-function addQs(list,def){let n=0,dup=0;for(const x of list){const name=(x.c||def||'Sans titre').trim();
-  let c=Object.values(db.c).find(c=>c.name===name);if(!c){c={id:uid(),name,qs:[]};db.c[c.id]=c}
+function addQs(list,def,cat){let n=0,dup=0;for(const x of list){const name=(x.c||def||'Sans titre').trim();
+  let c=Object.values(db.c).find(c=>c.name===name);if(!c){c={id:uid(),name,qs:[]};if(cat)c.cat=cat;db.c[c.id]=c}
   const key=x.q+'|'+x.o.join('|');if(c.qs.some(y=>y.q+'|'+y.o.join('|')===key)){dup++;continue}
   c.qs.push({id:uid(),t:x.t||(x.a.length>1?'QCM':'QCS'),q:x.q,o:x.o,a:x.a,e:x.e||''});n++}
  save();return `${n} question(s) ajoutée(s)`+(dup?`, ${dup} doublon(s) ignoré(s)`:'')}
 function doImport(){const t=$('#txt').value.trim(),def=$('#cn').value.trim()||'Mon cours';if(!t)return;
- try{const l=t[0]==='['||t[0]==='{'?parseJson(t,def):parseTxt(t,def);msg=l.length?addQs(l,def):'Aucune question valide détectée — vérifie le format ci-dessous.';if(l.length)V='home'}catch(e){msg='Erreur de lecture : '+e.message}go(V)}
+ try{const l=t[0]==='['||t[0]==='{'?parseJson(t,def):parseTxt(t,def);msg=l.length?addQs(l,def,$('#cm').value.trim()):'Aucune question valide détectée — vérifie le format ci-dessous.';if(l.length)V='home'}catch(e){msg='Erreur de lecture : '+e.message}go(V)}
 const SAMPLE=`# Exemple — Cardiologie
 
 Q: Parmi ces propositions, laquelle est un facteur de risque cardiovasculaire majeur ?
@@ -81,12 +86,12 @@ E: Pas d'amélioration en antéflexion (c'est la péricardite).`;
 const qsOf=c=>c==='*'?Object.values(db.c).flatMap(c=>c.qs):(db.c[c]?.qs||[]);
 const mast=c=>{const q=qsOf(c);return q.length?Math.round(q.reduce((s,x)=>s+((db.s[x.id]?.b??0)/4),0)/q.length*100):0};
 const stOf=x=>{const s=db.s[x.id];return s&&s.n?s:null},allQ=()=>Object.values(db.c).flatMap(c=>c.qs);
-const persist=()=>{db.cur=S?{ids:S.qs.map(q=>q.id),i:S.i,ans:S.ans,res:S.res,x:S.x,p:S.p,name:S.name}:null;save()};
-function start(){let q=qsOf(cfg.c);const s=stOf;
- if(cfg.f==='err')q=q.filter(x=>s(x)&&s(x).b===0);if(cfg.f==='new')q=q.filter(x=>!s(x));if(cfg.f==='fl')q=q.filter(x=>db.s[x.id]?.f);
- q=q.map(x=>[cfg.f==='smart'?(s(x)?s(x).b:-1)+Math.random()*1.5:Math.random(),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
+const persist=()=>{db.cur=S?{ids:S.qs.map(q=>q.id),i:S.i,ans:S.ans,res:S.res,x:S.x,p:S.p,m:S.m,name:S.name}:null;save()};
+function pick(){let q=qsOf(cfg.c);const s=stOf;
+ if(cfg.f==='err')q=q.filter(x=>s(x)&&s(x).b===0);if(cfg.f==='new')q=q.filter(x=>!s(x));if(cfg.f==='fl')q=q.filter(x=>db.s[x.id]?.f);return q}
+function start(){let q=pick().map(x=>[cfg.f==='smart'?(stOf(x)?stOf(x).b:-1)+Math.random()*1.5:Math.random(),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
  if(cfg.n)q=q.slice(0,cfg.n);if(!q.length){msg='Aucune question pour ce filtre.';return go('cfg')}
- S={qs:q,i:0,ans:[],res:[],x:cfg.x,p:cfg.p,name:cfg.c==='*'?'Tous les cours':db.c[cfg.c].name};persist();go('quiz')}
+ S={qs:q,i:0,ans:[],res:[],x:cfg.x,p:cfg.p,m:cfg.m,name:cfg.c==='*'?'Tous les cours':db.c[cfg.c].name};persist();go('quiz')}
 function resume(){const m=Object.fromEntries(allQ().map(q=>[q.id,q])),c=db.cur;
  if(!c||c.ids.some(i=>!m[i])){db.cur=null;S=null;save();msg='Session impossible à reprendre (questions modifiées).';return go('home')}
  S={...c,qs:c.ids.map(i=>m[i])};go('quiz')}
@@ -99,29 +104,88 @@ function finish(){const un=S.qs.filter((_,i)=>!S.ans[i]?.length&&!S.res[i]).leng
  const t=S.res.reduce((a,r)=>a+r.p,0);db.h.unshift({d:Date.now(),n:S.name,t:+t.toFixed(2),m:S.qs.length});db.h=db.h.slice(0,30);db.cur=null;save();go('res')}
 const goTo=i=>{S.i=Math.max(0,Math.min(S.qs.length-1,i));persist();go('quiz')};
 /* ---------- views ---------- */
-const opts=(q,sel,show)=>q.o.map((o,i)=>{let c=sel.includes(i)?'s':'';if(show){const g=q.a.includes(i),s=sel.includes(i);c=g&&s?'ok':s?'ko':g?'mi':''}
- return `<button class="opt ${c}" data-a="tog" data-i="${i}" ${show?'disabled':''}><b>${L[i]}</b><span>${esc(o)}</span></button>`}).join('');
+const opts=(q,sel,show,qi='')=>q.o.map((o,i)=>{let c=sel.includes(i)?'s':'';if(show){const g=q.a.includes(i),s=sel.includes(i);c=g&&s?'ok':s?'ko':g?'mi':''}
+ return `<button class="opt ${c}" data-a="tog" data-i="${i}" data-q="${qi}" ${show?'disabled':''}><b>${L[i]}</b><span>${esc(o)}</span></button>`}).join('');
 const seg=(k,o)=>`<div class="seg">${o.map(([v,l])=>`<button class="${cfg[k]===v?'on':''}" data-a="cf" data-k="${k}" data-v="${v}">${l}</button>`).join('')}</div>`;
+const IC=p=>`<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+const NAV=[['home','Accueil','<path d="M3 11l9-8 9 8M5 9.5V21h14V9.5"/>'],['cfg',"S'entraîner",'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>'],['lib','Bibliothèque','<rect x="4" y="3" width="5" height="18" rx="1"/><rect x="11" y="3" width="5" height="18" rx="1"/><path d="M18 6l3 1-3.5 13-3-1z"/>'],['imp','Importer','<path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v3h16v-3"/>']];
+const PROMPT=n=>`Tu es professeur de médecine et tu conçois des questions d'entraînement de niveau concours (PASS/LAS, EDN) à partir du cours ci-dessous.
+
+Génère ${n} questions : environ 40 % de QCS (une seule bonne réponse) et 60 % de QCM (2 à 4 bonnes réponses sur 5 propositions). Couvre tout le cours, y compris les détails piégeux (valeurs seuils, exceptions, diagnostics différentiels, classifications). Les propositions fausses doivent être plausibles, pas évidentes. Appuie-toi uniquement sur le cours fourni.
+
+FORMAT STRICT (sortie en texte brut, sans mise en forme) :
+- Première ligne : # Nom du cours
+- Une question = un bloc ; les blocs sont séparés par UNE ligne vide, et aucune ligne vide à l'intérieur d'un bloc
+- Ligne 1 du bloc : Q: énoncé sur une seule ligne
+- Puis les propositions, une par ligne : A) texte, B) texte, C) texte, D) texte, E) texte
+- Puis la ligne : R: lettres des bonnes réponses collées, par exemple R: B ou R: ACD
+- Puis la ligne : E: explication courte (une seule ligne) qui justifie les bonnes réponses ET explique pourquoi chaque proposition fausse est fausse
+- Ne numérote pas les questions ; n'utilise ni gras, ni tableaux, ni astérisques, ni blocs de code ; n'écris aucun texte avant ou après les questions
+
+Exemple :
+
+# Cardiologie
+
+Q: Quel est le facteur de risque cardiovasculaire majeur parmi ces propositions ?
+A) Hypertension artérielle
+B) Taille supérieure à 1m90
+C) Groupe sanguin O
+D) Allergie aux acariens
+E) Gaucherie
+R: A
+E: L'HTA est un facteur de risque majeur et modifiable. B, C, D et E n'ont aucun lien établi avec le risque cardiovasculaire.
+
+COURS :
+[colle ton cours ici]`;
+function toast(t){let e=$('#toast');if(!e){e=document.createElement('div');e.id='toast';document.body.appendChild(e)}e.textContent=t;e.className='show';clearTimeout(toast.t);toast.t=setTimeout(()=>e.className='',1800)}
+async function copyPrompt(){const t=PROMPT($('#pn').value||30);try{await navigator.clipboard.writeText(t)}catch(e){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove()}toast('Prompt copié ✓')}
+const cc=c=>`<div class="course"><div class="row"><b style="font-size:18px">${esc(c.name)}</b><div class="sp"></div>${c.cat?`<span class="tag">${esc(c.cat)}</span>`:''}</div><div class="mu">${c.qs.length} questions · ${mast(c.id)} % maîtrisé</div><div class="bar"><i style="width:${mast(c.id)}%"></i></div><div class="row"><button class="btn" data-a="quick" data-c="${c.id}" data-n="20">Réviser</button><button class="btn g" data-a="crs" data-c="${c.id}">Ouvrir</button></div></div>`;
+const fbk=(q,r)=>`<div class="card" style="border-color:var(--${r.p===1?'ok':r.p>0?'wa':'ko'})"><b>${r.p===1?'✓ Correct':r.p>0?'◐ Partiel · '+r.p+' pt':'✗ Faux'}</b> — réponse${q.a.length>1?'s':''} : ${q.a.map(i=>L[i]).join(', ')}${q.e?`<div class="ex">${esc(q.e)}</div>`:''}</div>`;
+const qi=d=>d.q?+d.q:S.i;
 const V_={
-home(){const cs=Object.values(db.c),tot=qsOf('*').length;
- return `<h1>Mes cours</h1>${msg?`<div class="card">${esc(msg)}</div>`:''}${db.cur?`<div class="card row" style="border-color:var(--ac)"><div><b>Session en cours</b><div class="mu">${esc(db.cur.name)} · question ${db.cur.i+1}/${db.cur.ids.length}</div></div><div class="sp"></div><button class="btn" data-a="resume">Reprendre</button><button class="btn d" data-a="drop">Abandonner</button></div>`:''}${tot&&Date.now()-(db.bk||db.t0)>6048e5?`<div class="card row"><span>💾 Pense à exporter une sauvegarde.</span><div class="sp"></div><button class="btn g" data-a="exp">Exporter</button></div>`:''}`+(cs.length?`<div class="card row"><div><b>${tot}</b> questions · <b>${cs.length}</b> cours<div class="mu">Maîtrise globale ${mast('*')}%</div></div><div class="sp"></div><button class="btn" data-a="go" data-c="*">Tout réviser</button></div>`+
- cs.map(c=>`<div class="card"><div class="row"><b style="font-size:19px">${esc(c.name)}</b><div class="sp"></div><span class="mu">${c.qs.length} q. · ${mast(c.id)}%</span></div><div class="bar" style="margin:10px 0"><i style="width:${mast(c.id)}%"></i></div><div class="row"><button class="btn" data-a="go" data-c="${c.id}">S'entraîner</button><button class="btn g" data-a="crs" data-c="${c.id}">Questions</button></div></div>`).join('')+
- (db.h.length?`<h2>Historique</h2><div class="card">${db.h.slice(0,8).map(h=>`<div class="row" style="padding:5px 0"><span>${esc(h.n)}</span><div class="sp"></div><span class="mu">${new Date(h.d).toLocaleDateString('fr-FR')}</span><b>${h.t}/${h.m}</b></div>`).join('')}</div>`:''):
- `<div class="card"><p>Aucun cours pour l'instant. Importe tes questions pour commencer.</p><button class="btn" data-a="tab" data-v="imp">Importer des questions</button> <button class="btn g" data-a="sample">Charger un exemple</button></div>`)},
-imp(){return `<h1>Importer</h1>${msg?`<div class="card">${esc(msg)}</div>`:''}<div class="card"><p class="mu">Nom du cours (si absent du texte)</p><input id="cn" placeholder="ex : Cardiologie"><p class="mu">Colle tes questions (texte ou JSON) ou choisis un fichier</p><textarea id="txt" placeholder="Q: …&#10;A) …&#10;*B) bonne réponse&#10;E: explication"></textarea><div class="row" style="margin-top:12px"><input type="file" id="f" accept=".txt,.json,.md" style="flex:1"><button class="btn" data-a="imp">Importer</button></div></div>
- <details class="card"><summary><b>Format accepté & prompt pour tes cours</b></summary><pre style="white-space:pre-wrap;font-size:13px">${esc(SAMPLE)}</pre><p class="mu">Une question = un bloc séparé par une ligne vide. Bonnes réponses : * devant la lettre, ou ligne « R: AC ». « # Titre » crée/choisit le cours. Une seule bonne réponse = QCS, plusieurs = QCM. Le JSON est aussi accepté : [{"q":"…","o":["…","…"],"a":[0,2],"e":"…"}].</p><p><b>Prompt à donner à Claude :</b><br><i>« Transforme ce cours en 30 QCM/QCS de niveau concours, exactement dans ce format (blocs séparés par une ligne vide, # Titre, Q:, A) B) C) D) E), R: lettres, E: explication) : »</i></p></details>
- <h2>Données</h2><div class="card row"><button class="btn g" data-a="exp">Exporter une sauvegarde</button><label class="btn g">Restaurer<input type="file" id="rs" accept=".json" hidden></label><div class="sp"></div><button class="btn d" data-a="rst">Tout effacer</button></div><p class="mu">Tout est stocké hors ligne sur l'iPad. Exporte une sauvegarde de temps en temps.</p>`},
-cfg(){const cs=Object.values(db.c);return `<h1>Nouvelle session</h1>${msg?`<div class="card">${esc(msg)}</div>`:''}<div class="card"><p class="mu">Cours</p><select data-a="cf" data-k="c"><option value="*">Tous les cours</option>${cs.map(c=>`<option value="${c.id}" ${cfg.c===c.id?'selected':''}>${esc(c.name)} (${c.qs.length})</option>`).join('')}</select>
- <p class="mu">Nombre de questions</p>${seg('n',[[10,'10'],[20,'20'],[40,'40'],[0,'Toutes']])}<p class="mu">Questions</p>${seg('f',[['smart','Intelligent'],['all','Aléatoire'],['err','Erreurs'],['new','Non vues'],['fl','⚑ Marquées']])}
- <p class="mu">Mode</p>${seg('x',[[0,'Entraînement'],[1,'Examen']])}<p class="mu">Notation QCM</p>${seg('p',[[1,'Partielle (1 / .5 / .2)'],[0,'Tout ou rien']])}</div><div class="row"><button class="btn g" data-a="tab" data-v="home">Retour</button><div class="sp"></div><button class="btn" data-a="start">Commencer</button></div>`},
+home(){const all=allQ(),tot=all.length,cs=Object.values(db.c),seen=all.filter(stOf).length,h=new Date().getHours(),hi=h<18?'Bonjour':'Bonsoir',
+ sn=Object.values(db.s).reduce((a,s)=>[a[0]+s.n,a[1]+s.k],[0,0]),prec=sn[0]?Math.round(sn[1]/sn[0]*100):0,
+ cnt={err:all.filter(x=>stOf(x)&&stOf(x).b===0).length,fl:all.filter(x=>db.s[x.id]?.f).length,new:tot-seen},
+ days=[...Array(7)].map((_,k)=>{const d=new Date();d.setDate(d.getDate()-6+k);return[d,db.h.filter(e=>new Date(e.d).toDateString()===d.toDateString()).reduce((a,e)=>a+e.m,0)]}),mx=Math.max(1,...days.map(x=>x[1]));
+ let st=0;for(let k=0;k<400;k++){const d=new Date();d.setDate(d.getDate()-k);if(db.h.some(e=>new Date(e.d).toDateString()===d.toDateString()))st++;else if(k>0)break}
+ const hero=!tot?`<div class="hero"><span class="kick">${hi} 👋</span><h1>Bienvenue</h1><p>Importe tes premières questions pour démarrer.</p><div class="row"><button class="btn lt" data-a="tab" data-v="imp">Importer des questions</button><button class="btn gl" data-a="sample">Charger un exemple</button></div></div>`
+ :db.cur?`<div class="hero"><span class="kick">Session en cours</span><h1>${esc(db.cur.name)}</h1><p>Question ${db.cur.i+1} sur ${db.cur.ids.length}</p><div class="row"><button class="btn lt" data-a="resume">Reprendre</button><button class="btn gl" data-a="drop">Abandonner</button></div></div>`
+ :`<div class="hero"><span class="kick">${hi} 👋</span><h1>Prêt à réviser ?</h1><p>${tot} questions dans ${cs.length} cours${cnt.err?' · '+cnt.err+' à retravailler':''}</p><div class="row"><button class="btn lt" data-a="quick" data-n="20">Session intelligente · 20 q.</button><button class="btn gl" data-a="tab" data-v="cfg">Personnaliser</button></div></div>`;
+ const tile=(v,l)=>`<div class="tile"><b>${v}</b><span>${l}</span></div>`,ql=(f,l,n)=>`<button class="ql" data-a="quick" data-f="${f}" data-n="20" ${n?'':'disabled'}><b>${n}</b><span>${l}</span></button>`;
+ return (msg?`<div class="card">${esc(msg)}</div>`:'')+hero+(tot?`<div class="tiles">${tile(tot,'Questions')}${tile(mast('*')+' %','Maîtrise')}${tile(prec+' %','Réussite')}${tile(st+' j','Série')}</div>
+ ${Date.now()-(db.bk||db.t0)>6048e5?`<div class="card row" style="margin-top:12px"><span>💾 Pense à exporter une sauvegarde.</span><div class="sp"></div><button class="btn g" data-a="exp">Exporter</button></div>`:''}
+ <h2>À retravailler</h2><div class="qls">${ql('err','Erreurs à reprendre',cnt.err)}${ql('fl','Questions marquées ⚑',cnt.fl)}${ql('new','Jamais vues',cnt.new)}</div>
+ <div class="cols"><div><div class="row"><h2 style="margin-right:auto">Mes cours</h2><button class="btn g" data-a="tab" data-v="lib">Tout voir</button></div><div class="grid">${cs.slice(0,6).map(cc).join('')}</div></div>
+ <div><h2>Cette semaine</h2><div class="card"><div class="bars">${days.map(([d,n])=>`<div class="bc"><i style="height:${n/mx*100}%"></i>${'DLMMJVS'[d.getDay()]}</div>`).join('')}</div><div class="mu" style="margin-top:8px">Questions travaillées par jour</div></div>
+ ${db.h.length?`<h2>Dernières sessions</h2><div class="card">${db.h.slice(0,6).map(e=>`<div class="row" style="padding:5px 0"><span>${esc(e.n)}</span><div class="sp"></div><span class="mu">${new Date(e.d).toLocaleDateString('fr-FR')}</span><b>${e.t}/${e.m}</b></div>`).join('')}</div>`:''}</div></div>`:'')},
+lib(){const cs=Object.values(db.c),g=gsq.trim().toLowerCase(),nq=allQ().length;
+ const srch=g?cs.flatMap(c=>c.qs.map(x=>[c,x])).filter(([c,x])=>(x.q+' '+x.o.join(' ')+' '+c.name).toLowerCase().includes(g)):[];
+ const cats=[...new Set(cs.map(c=>c.cat||''))].sort((a,b)=>(!a-!b)||a.localeCompare(b));
+ return `<div class="row"><h1 style="margin:0">Bibliothèque</h1><div class="sp"></div><button class="btn" data-a="tab" data-v="imp">＋ Importer</button></div><p class="mu">${cs.length} cours · ${nq} questions · classés par matière</p><input id="gs" placeholder="Rechercher une question ou un cours…" value="${esc(gsq)}">`+
+ (g?`<h2>${srch.length} résultat(s)</h2>`+srch.slice(0,100).map(([c,x])=>`<button class="opt lst" data-a="ed" data-id="${x.id}" data-c="${c.id}"><span class="tag">${x.t}</span> <span class="mu">${esc(c.name)}</span><br>${esc(x.q)}</button>`).join(''):
+ cs.length?cats.map(k=>`<h2>${esc(k||'Sans matière')}</h2><div class="grid">${cs.filter(c=>(c.cat||'')===k).map(cc).join('')}</div>`).join(''):`<div class="card" style="margin-top:14px"><p>Ta bibliothèque est vide.</p><button class="btn" data-a="tab" data-v="imp">Importer des questions</button></div>`)},
+imp(){return `<h1>Importer</h1>${msg?`<div class="card">${esc(msg)}</div>`:''}<div class="cols"><div>
+ <div class="card"><div class="row"><span class="step">1</span><b>Copie le prompt</b></div><p class="mu">Il contient le format exact attendu par l'app.</p><div class="row"><input id="pn" type="number" min="5" max="80" value="30" style="width:90px"><span class="mu">questions</span><div class="sp"></div><button class="btn" data-a="cp">Copier le prompt</button></div></div>
+ <div class="card"><div class="row"><span class="step">2</span><b>Génère</b></div><p class="mu" style="margin:6px 0 0">Colle le prompt dans l'IA de ton choix avec ton cours, puis copie toute sa réponse.</p></div>
+ <details class="card"><summary><b>Format accepté</b></summary><pre style="white-space:pre-wrap;font-size:13px">${esc(SAMPLE)}</pre><p class="mu">Blocs séparés par une ligne vide. Bonnes réponses : « R: AC » ou * devant la lettre. Le JSON est aussi accepté.</p></details>
+ <h2>Données</h2><div class="card row"><button class="btn g" data-a="exp">Exporter</button><label class="btn g">Restaurer<input type="file" id="rs" accept=".json" hidden></label><div class="sp"></div><button class="btn d" data-a="rst">Tout effacer</button></div></div>
+ <div class="card"><div class="row"><span class="step">3</span><b>Colle la réponse ici</b></div><div class="row" style="margin:12px 0"><input id="cn" placeholder="Cours (si absent du texte)" style="flex:1"><input id="cm" placeholder="Matière (optionnel)" style="flex:1"></div><textarea id="txt" placeholder="# Cardiologie&#10;&#10;Q: …&#10;A) …&#10;R: A&#10;E: …"></textarea><div class="row" style="margin-top:12px"><input type="file" id="f" accept=".txt,.json,.md" style="flex:1"><button class="btn" data-a="imp">Importer</button></div></div></div>`},
+cfg(){const cs=Object.values(db.c),av=pick().length,n=cfg.n?Math.min(cfg.n,av):av,sg=(l,k,o)=>`<p class="mu">${l}</p>`+seg(k,o);
+ return `<h1>Nouvelle session</h1>${msg?`<div class="card">${esc(msg)}</div>`:''}<div class="cols"><div class="card"><p class="mu">Cours</p><select data-a="cf" data-k="c" style="margin-bottom:12px"><option value="*">Tous les cours</option>${cs.map(c=>`<option value="${c.id}" ${cfg.c===c.id?'selected':''}>${esc(c.name)} (${c.qs.length})</option>`).join('')}</select>${sg('Questions','f',[['smart','Intelligent'],['all','Aléatoire'],['err','Erreurs'],['new','Non vues'],['fl','⚑ Marquées']])}${sg('Nombre','n',[[10,'10'],[20,'20'],[40,'40'],[0,'Toutes']])}</div>
+ <div class="card">${sg('Mode','x',[[0,'Entraînement'],[1,'Examen']])}<p class="mu" style="margin:-4px 0 12px">${cfg.x?'Correction à la fin de la session.':'Correction après chaque validation.'}</p>${sg('Affichage','m',[['one','Question par question'],['all','Toutes à la suite']])}${sg('Notation QCM','p',[[1,'Partielle (1 / .5 / .2)'],[0,'Tout ou rien']])}</div></div>
+ <div class="card row"><div><b style="font-size:22px">${n}</b> question(s) <span class="mu">sur ${av} disponibles</span></div><div class="sp"></div><button class="btn" data-a="start" ${n?'':'disabled'}>Commencer</button></div>`},
 crs(){const c=db.c[cv];if(!c)return V_.home();const f=sq.toLowerCase(),qs=c.qs.filter(x=>!f||x.q.toLowerCase().includes(f)||x.o.some(o=>o.toLowerCase().includes(f)));
  const bx=[0,1,2,3,4].map(b=>c.qs.filter(x=>stOf(x)&&stOf(x).b===b).length);
- return `<div class="row"><button class="btn g" data-a="tab" data-v="home">← Cours</button><div class="sp"></div><button class="btn g" data-a="ren">Renommer</button><button class="btn d" data-a="del" data-c="${c.id}">Supprimer</button></div><h1>${esc(c.name)}</h1>
+ return `<div class="row"><button class="btn g" data-a="tab" data-v="lib">← Bibliothèque</button><div class="sp"></div><button class="btn g" data-a="cat">Matière</button><button class="btn g" data-a="ren">Renommer</button><button class="btn d" data-a="del" data-c="${c.id}">Supprimer</button></div><h1>${esc(c.name)}</h1>
  <div class="card"><div class="row" style="justify-content:space-between"><span>Non vues <b>${c.qs.filter(x=>!stOf(x)).length}</b></span>${bx.map((n,b)=>`<span>Niv.${b} <b>${n}</b></span>`).join('')}</div><div class="mu" style="margin:6px 0 10px">Niveau 0 = à retravailler · Niveau 4 = bien acquise</div><button class="btn" data-a="go" data-c="${c.id}">S'entraîner</button></div>
  <input id="sq" placeholder="Rechercher dans ${c.qs.length} questions…" value="${esc(sq)}" style="margin-bottom:12px">`+qs.slice(0,150).map(x=>{const s=stOf(x);return `<button class="opt lst" data-a="ed" data-id="${x.id}"><span class="tag">${x.t}</span> ${db.s[x.id]?.f?'⚑ ':''}<span class="mu">${s?'Niv.'+s.b+' · '+s.k+'/'+s.n+' justes':'Non vue'}</span><br>${esc(x.q)}</button>`}).join('')+(qs.length>150?`<p class="mu">${qs.length-150} autres : affine la recherche.</p>`:'')},
 edit(){const x=db.c[cv]?.qs.find(q=>q.id===eid);if(!x)return V_.crs();const ta=(id,v,h)=>`<textarea id="${id}" style="min-height:${h}px;font:inherit">${esc(v)}</textarea>`;
  return `<h1>Modifier la question</h1><div class="card"><p class="mu">Énoncé</p>${ta('eq',x.q,110)}<p class="mu">Propositions (une par ligne : A, B, C…)</p>${ta('eo',x.o.join('\n'),170)}<p class="mu">Bonnes réponses (lettres, ex : AC)</p><input id="ea" value="${x.a.map(i=>L[i]).join('')}"><p class="mu">Explication</p>${ta('ee',x.e,90)}</div><div class="row"><button class="btn g" data-a="cback">Annuler</button><button class="btn d" data-a="edel">Supprimer</button><div class="sp"></div><button class="btn" data-a="esave">Enregistrer</button></div>`},
-quiz(){const q=S.qs[S.i],r=S.res[S.i],sel=S.ans[S.i]||[],lock=!!r&&!S.x,last=S.i===S.qs.length-1,fl=db.s[q.id]?.f,
+qall(){const done=S.qs.filter((_,i)=>S.ans[i]?.length||S.res[i]).length;
+ return `<div class="top"><button class="btn d" data-a="quit">✕</button><div class="sp"><div class="bar"><i style="width:${done/S.qs.length*100}%"></i></div></div><span class="mu">${done}/${S.qs.length}</span><button class="btn" data-a="fin">Terminer</button></div>`+
+ S.qs.map((q,i)=>{const r=S.res[i],sel=S.ans[i]||[],lock=!!r&&!S.x,fl=db.s[q.id]?.f;
+ return `<div class="card"><div class="row"><span class="num">${i+1}</span><span class="tag">${q.t}</span><span class="mu">${q.t==='QCS'?'Une seule réponse':'Une ou plusieurs réponses'}</span><div class="sp"></div><button class="btn ${fl?'':'g'}" data-a="flag" data-q="${i}">⚑</button></div><div class="stem">${esc(q.q)}</div>${opts(q,sel,lock,i)}${lock?fbk(q,r):''}${!S.x&&!r?`<button class="btn" data-a="val" data-q="${i}" ${sel.length?'':'disabled'}>Valider</button>`:''}</div>`}).join('')+`<div class="row" style="justify-content:center"><button class="btn" data-a="fin">Terminer et corriger</button></div>`},
+quiz(){if(S.m==='all')return V_.qall();const q=S.qs[S.i],r=S.res[S.i],sel=S.ans[S.i]||[],lock=!!r&&!S.x,last=S.i===S.qs.length-1,fl=db.s[q.id]?.f,
  done=S.qs.filter((_,i)=>S.ans[i]?.length||S.res[i]).length;
  const chips=S.qs.map((_,i)=>{const rr=S.res[i],c=rr&&!S.x?(rr.p===1?'ok':rr.p>0?'wa':'ko'):S.ans[i]?.length?'an':'';return `<button class="chip ${c} ${i===S.i?'cur':''}" data-a="to" data-i="${i}">${i+1}</button>`}).join('');
  const main=!S.x&&!r?`<button class="btn" id="main" data-a="val" ${sel.length?'':'disabled'}>Valider</button>`:last?`<button class="btn" id="main" data-a="fin">Terminer</button>`:`<button class="btn" id="main" data-a="to" data-i="${S.i+1}">Suivant →</button>`;
@@ -134,30 +198,32 @@ res(){const t=S.res.reduce((a,r)=>a+r.p,0),m=S.qs.length;return `<h1>Résultats<
 const A={tab(d){msg='';go(d.v)},go(d){cfg.c=d.c;msg='';go('cfg')},cf(d,el){cfg[d.k]=el.tagName==='SELECT'?el.value:isNaN(+d.v)?d.v:+d.v;go('cfg')},start,resume,fin:finish,
  drop(){if(confirm('Abandonner la session en cours ?')){S=null;db.cur=null;save();go('home')}},
  del(d){if(confirm('Supprimer ce cours et toutes ses questions ?')){delete db.c[d.c];save();go('home')}},
- crs(d){cv=d.c;sq='';go('crs')},ed(d){eid=d.id;go('edit')},cback(){go('crs')},
+ crs(d){cv=d.c;sq='';go('crs')},cp:copyPrompt,
+ quick(d){const o={...cfg};Object.assign(cfg,{c:d.c||'*',f:d.f||'smart',n:+d.n||20});start();Object.assign(cfg,{c:o.c,f:o.f,n:o.n})},
+ cat(){const n=prompt('Matière du cours (ex : Cardiologie, Pneumologie…)',db.c[cv].cat||'');if(n!==null){db.c[cv].cat=n.trim()||undefined;save();go('crs')}},ed(d){eid=d.id;if(d.c)cv=d.c;go('edit')},cback(){go('crs')},
  ren(){const n=prompt('Nouveau nom du cours',db.c[cv].name);if(n?.trim()){db.c[cv].name=n.trim();save();go('crs')}},
  esave(){const o=$('#eo').value.split('\n').map(x=>x.trim()).filter(Boolean),a=[...new Set([...$('#ea').value.toUpperCase().replace(/[^A-H]/g,'')].map(c=>L.indexOf(c)))],q=$('#eq').value.trim();
   if(!q||o.length<2||!a.length||a.some(i=>i>=o.length)){alert('Il faut un énoncé, 2 propositions minimum et des bonnes réponses valides.');return}
   const x=db.c[cv].qs.find(z=>z.id===eid);Object.assign(x,{q,o,a,e:$('#ee').value.trim()});x.t=a.length>1||x.t==='QCM'?'QCM':'QCS';save();go('crs')},
  edel(){if(confirm('Supprimer cette question ?')){const c=db.c[cv];c.qs=c.qs.filter(z=>z.id!==eid);delete db.s[eid];save();go('crs')}},
  sample(){msg=addQs(parseTxt(SAMPLE,'Exemple'));go('home')},imp:doImport,
- tog(d){const i=+d.i,q=S.qs[S.i];if(S.res[S.i]&&!S.x)return;const a=S.ans[S.i]||[];S.ans[S.i]=q.t==='QCS'?[i]:a.includes(i)?a.filter(x=>x!==i):[...a,i];persist();go('quiz',1)},
- val(){record(S.i);persist();go('quiz',1)},to(d){goTo(+d.i)},
- flag(){const id=S.qs[S.i].id,s=db.s[id]||(db.s[id]={b:0,n:0,k:0});s.f=!s.f;save();go('quiz',1)},
+ tog(d){const k=qi(d),i=+d.i,q=S.qs[k];if(S.res[k]&&!S.x)return;const a=S.ans[k]||[];S.ans[k]=q.t==='QCS'?[i]:a.includes(i)?a.filter(x=>x!==i):[...a,i];persist();go('quiz',1)},
+ val(d){record(qi(d));persist();go('quiz',1)},to(d){goTo(+d.i)},
+ flag(d){const id=S.qs[qi(d)].id,s=db.s[id]||(db.s[id]={b:0,n:0,k:0});s.f=!s.f;save();go('quiz',1)},
  quit(){go('home')},
  redo(){const q=S.qs.filter((_,i)=>S.res[i].p<1);S={...S,qs:q,i:0,ans:[],res:[]};persist();go('quiz')},
  exp(){db.bk=Date.now();save();const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(db)],{type:'application/json'}));a.download='qcm-sauvegarde-'+new Date().toISOString().slice(0,10)+'.json';a.click();go(V)},
  rst(){if(confirm('Effacer TOUTES les données ?')&&confirm('Vraiment ? Irréversible.')){db={c:{},s:{},h:[],t0:Date.now()};S=null;save();go('home')}}};
-document.addEventListener('keydown',e=>{if(V!=='quiz'||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;const k=e.key.toUpperCase(),q=S.qs[S.i];
+document.addEventListener('keydown',e=>{if(V!=='quiz'||S.m==='all'||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;const k=e.key.toUpperCase(),q=S.qs[S.i];
  if(k.length===1&&L.includes(k)&&L.indexOf(k)<q.o.length)A.tog({i:L.indexOf(k)});else if(k==='ENTER')$('#main')?.click();else if(k==='ARROWRIGHT')goTo(S.i+1);else if(k==='ARROWLEFT')goTo(S.i-1)});
 document.addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(t&&t.tagName!=='SELECT')A[t.dataset.a](t.dataset,t)});
-document.addEventListener('change',e=>{const t=e.target;if(t.id==='sq'){sq=t.value;go('crs');return}if(t.tagName==='SELECT'&&t.dataset.a)A.cf(t.dataset,t);
+document.addEventListener('change',e=>{const t=e.target;if(t.id==='sq'){sq=t.value;go('crs');return}if(t.id==='gs'){gsq=t.value;go('lib');return}if(t.tagName==='SELECT'&&t.dataset.a)A.cf(t.dataset,t);
  if(t.id==='f'||t.id==='rs'){const f=t.files[0];if(!f)return;f.text().then(x=>{if(t.id==='f'){$('#txt').value=x;if(!$('#cn').value)$('#cn').value=f.name.replace(/\.\w+$/,'')}
   else try{const d=JSON.parse(x);if(d.c){db=d;save();msg='Sauvegarde restaurée.';go('home')}}catch(e){msg='Fichier invalide.';go('imp')}})}});
 function go(v,keep){V=v;const x=scrollY;$('#m').innerHTML=V_[V]();
- $('#tb').style.display=['home','imp','crs'].includes(v)?'flex':'none';
- $('#tb').innerHTML=[['home','📚 Cours'],['imp','⬇︎ Importer']].map(([k,l])=>`<button class="${v===k||(k==='home'&&v==='crs')?'on':''}" data-a="tab" data-v="${k}">${l}</button>`).join('');
- keep?scrollTo(0,x):scrollTo(0,0);if(v!=='home'&&v!=='imp'&&v!=='cfg')msg=''}
+ document.body.classList.toggle('focus',v==='quiz'||v==='res');const act=v==='crs'||v==='edit'?'lib':v;
+ $('#tb').innerHTML=`<div class="brand"><i>✚</i><b>MedRév</b></div>`+NAV.map(([k,l,p])=>`<button class="${act===k?'on':''}" data-a="tab" data-v="${k}">${IC(p)}<span>${l}</span></button>`).join('');
+ keep?scrollTo(0,x):scrollTo(0,0);if(!['home','imp','cfg','lib','crs','edit'].includes(v))msg=''}
 go('home');
 if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js');
 </script></body></html>
